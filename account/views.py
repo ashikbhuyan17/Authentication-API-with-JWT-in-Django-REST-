@@ -27,4 +27,5 @@ class   UserLoginView(APIView):
             user = authenticate(email=email, password=pasword)
             if user:
                 return Response({'message': 'User logged in successfully'}, status=status.HTTP_200_OK)
-            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)    
+            return Response({'errors':{'non_field_errors':['Email or password is not valid']}}, 
+            status=status.HTTP_404_NOT_FOUND)    
